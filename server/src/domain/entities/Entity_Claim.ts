@@ -51,4 +51,48 @@ class Claim{
             cloneOf
         )
     }
+
+    public changeOwner(owner: Visitor): void {
+        this.owner = owner;
+    }
+    public changeTitle(title: string): void {
+        this.title = title;
+    }
+    public changeDescription(description: string): void{
+        this.description=description;
+    }  
+    public changeCategory(category: Category): void{
+        this.category=category;
+    }
+    public changeLocation(location: string): void{
+        this.location=location;
+    }
+    public changeCloneOf(cloneOf: Claim): void{
+        this.cloneOf=cloneOf;
+    }
+    public getId(): string{
+        return this.id;
+    }
+    public getOwner(): Visitor{
+        return this.owner;
+    }
+    public getTitle(): string{
+        return this.title;
+    }
+    public getDescription(): string{
+        return this.description;
+    }
+    public getCategory(): Category{
+        return this.category;
+    }
+    public getLocation(): string{
+        return this.location;
+    }
+    public getCreatedAt(): Date{
+        return this.createdAt;
+    }
+    public getCloneOf(): Claim{
+        return this.cloneOf;
+    }
 }
+export default Claim;
