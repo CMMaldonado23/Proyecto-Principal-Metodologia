@@ -1,4 +1,4 @@
-class vistor {
+class Visitor {
     private id: string
     private ip: string
     private nickname: string 
@@ -15,6 +15,10 @@ class vistor {
         this.nickname = nicknmame;
 
     }
+    public getId(): string {
+        return this.id;
+      }
+    
 }
-    export default vistor;
+    export default Visitor;
 
