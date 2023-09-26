@@ -1,4 +1,4 @@
-class category{
+class Category{
     private id: string
     private name: string
     private color: string
@@ -20,4 +20,4 @@ class category{
     
 }
 
-export default category;
+export default Category;
