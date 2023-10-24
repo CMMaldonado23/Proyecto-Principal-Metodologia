@@ -22,6 +22,10 @@ public async findOneById (id: string): Promise <Visitor| null>{
     return visitor? visitor : null;
 }
 
+public async findPin (id: string): Promise <Visitor | null> {
+    const visitor = this.visitor.find(a=> a.getPin() === id);
+    return visitor ? visitor : null;
+}
 
 }
 export default new VisitorRepository();
