@@ -1,4 +1,5 @@
 class Visitor {
+
     private  id: string
     private  ip: string
     private  nickname: string 
@@ -14,7 +15,7 @@ class Visitor {
 
         this.id = id;
         this.ip = ip;
-        this.nickname = nicknmame;
+        this.nickname = nicknmame;        
         this.pin= pin
     }
     public getId(): string {
@@ -35,4 +36,5 @@ class Visitor {
       }
     
 export default Visitor;
+
 

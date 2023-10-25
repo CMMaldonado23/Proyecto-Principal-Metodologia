@@ -26,6 +26,7 @@ class CreateVisitorCommand {
         return this.nickname;
     }
     public getPin(): string{
+
         return this.pin;
     }
 }
