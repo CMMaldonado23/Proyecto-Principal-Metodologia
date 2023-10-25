@@ -1,4 +1,4 @@
-import { Category } from '../../domain/entities/Entity_Category'
+import { Category } from '../entities/Entity_Category'
 import CategoryRepository from '../../infrastructure/repositories/RepositoryCategory'
 
 class CategorySeeder {

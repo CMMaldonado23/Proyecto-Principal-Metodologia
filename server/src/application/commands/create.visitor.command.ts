@@ -2,7 +2,7 @@ class CreateVisitorCommand {
     private readonly id: string;
     private readonly ip: string;
     private readonly nickname: string;
-    private readonly pin: string;
+    private readonly pin : string
 
     public constructor(
         id: string, 
@@ -25,7 +25,8 @@ class CreateVisitorCommand {
     public getNickname(): string {
         return this.nickname;
     }
-    public getPin(): string {
+    public getPin(): string{
+
         return this.pin;
     }
 }
