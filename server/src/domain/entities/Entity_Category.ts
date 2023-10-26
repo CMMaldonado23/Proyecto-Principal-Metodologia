@@ -13,10 +13,21 @@ class Category{
        this.name = name;
        this.color = color;
     }
+    public static create(
+        id: string,
+        name: string,
+        color: string
+    ): Category {
+        return new Category(
+            id,            
+            name,
+            color
+        );
+    }
 
     public getId(): string {
         return this.id;
-      }
+    }
     
 }
 
