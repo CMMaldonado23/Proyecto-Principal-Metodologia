@@ -1,4 +1,4 @@
-class CreateDislikeCommand {
+class CreateLikeCommand {
     private readonly visitorId: string;
     private readonly visitorPin: string;
     private readonly claimId: string;
@@ -23,4 +23,4 @@ class CreateDislikeCommand {
         return this.claimId;
     }
 }
-export default CreateDislikeCommand;
+export default CreateLikeCommand;
