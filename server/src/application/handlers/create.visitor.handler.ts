@@ -3,22 +3,17 @@ import RepositoryVisitor from "infrastructure/repositories/RepositoryVisitor";
 import CreateVisitorCommand from "application/commands/create.visitor.command";
 
 
-class CreateVisitorHandler{
-    async execute (command : CreateVisitorCommand){
+class CreateVisitorHandler {
+  async execute(command: CreateVisitorCommand) {
 
-        const id = command.getId();
-        const findId = await RepositoryVisitor.findOneById(id);
+    const visitor = Visitor.create(
+      command.getIp(),
+      command.getNickname(),
+      command.getPin()
+    );
 
-        if(!findId){
-            const visitor = Visitor.create(
-                command.getId(),
-                command.getIp(),
-                command.getNickname(),
-                command.getPin()
-            );                 
-        }else{
-            throw new Error('Visitor already exists')
-        }
-    }
+    await RepositoryVisitor.save(visitor);
+  }
 }
+
 export default new CreateVisitorHandler();
