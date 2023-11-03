@@ -7,7 +7,7 @@ class GetCategoriesHandler{
         const categories = await RepositoryCategory.findOneById(command.getId())
 
         if(!categories){
-            throw new Error ('User not found');
+            throw new Error ('Category not found');
         }
         return categories;
     }
