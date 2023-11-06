@@ -13,13 +13,13 @@ class CreateDislikeCommand {
             this.claimId = claimId;
         }
 
-    public getvisitorId(): string {
+    public getVisitorId(): string {
         return this.visitorId;
     }    
-    public getvisitorPin(): string {
+    public getVisitorPin(): string {
         return this.visitorPin;
     }
-    public getclaimId(): string {
+    public getClaimId(): string {
         return this.claimId;
     }
 }
