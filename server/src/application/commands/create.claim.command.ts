@@ -4,20 +4,20 @@ import Visitor from "../../domain/entities/Entity_Visitor";
 
 class CreateClaimCommand {
     private readonly id: string;
-    private readonly owner: Visitor;
+    private readonly owner: string;
     private readonly title: string;
     private readonly description: string;
-    private readonly category: Category;
+    private readonly category: string;
     private readonly location: string;
     private readonly createdAt: Date;
     private readonly cloneOf: Claim;
 
     public constructor(
         id: string,
-        owner: Visitor,
+        owner: string,
         title: string,
         description: string,
-        category: Category,
+        category: string,
         location: string,
         createdAt: Date,
         cloneOf: Claim
@@ -35,7 +35,7 @@ class CreateClaimCommand {
     public getId(): string {
         return this.id;
     }
-    public getOwner(): Visitor {
+    public getOwner(): string {
         return this.owner;
     }
     public getTitle(): string {
@@ -44,7 +44,7 @@ class CreateClaimCommand {
     public getDescription(): string {
         return this.description;
     }
-    public getCategory(): Category {
+    public getCategory(): string {
         return this.category;
     }
     public getLocation(): string {

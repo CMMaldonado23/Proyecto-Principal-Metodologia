@@ -1,6 +1,6 @@
 import category from "../../domain/entities/Entity_Category";
 
-export class CategoryRepository {
+class CategoryRepository {
   private category: category[];
 
   public constructor() {
@@ -28,5 +28,5 @@ export class CategoryRepository {
   }
 
 }
-
+export { CategoryRepository }
 export default new CategoryRepository();
