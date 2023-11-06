@@ -12,6 +12,7 @@ class Claim {
   private createdAt: Date;
   private cloneOf: Claim| null;
   private likes: string[] = []
+  private dislikes: string[] = []
 
   private constructor(
     id: string,
@@ -117,9 +118,19 @@ class Claim {
 
     this.likes.push(id)
   }
+  
+  addDislike(id: string){
+    if (this.hasVisitorDisliked(id)){
+      throw new Error('Visitor has already disliked this claim.')
+    }
+  }
 
   public hasVisitorLiked(id: string) {
     return this.likes.includes(id);
+  }
+
+  public hasVisitorDisliked(id: string){
+    return this.dislikes.includes(id);
   }
 }
 
