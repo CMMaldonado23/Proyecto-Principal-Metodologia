@@ -132,6 +132,15 @@ class Claim {
   public hasVisitorDisliked(id: string){
     return this.dislikes.includes(id);
   }
+
+  public report(originalClaim: Claim) {
+
+    if (this.createdAt.getTime() < originalClaim.createdAt.getTime()) {
+      throw new Error('Original claim is older than duplicated claim');
+    }
+
+    this.cloneOf = originalClaim;
+  }
 }
 
 export default Claim;
