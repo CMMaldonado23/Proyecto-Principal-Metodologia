@@ -38,6 +38,18 @@ class ClaimRepository {
  private getActiveClaims(): Array<Claim>{
   return this.claims.filter(c => !c.cloneOf);
  }
+ public async UltimosReclamos(): Promise<Claim[]> {
+  const now = new Date();
+  const oneHourAgo = new Date(now);
+  oneHourAgo.setHours(now.getHours() - 1);
+
+  return this.getActiveClaims().filter((claim) =>
+    claim.createdAt > oneHourAgo
+  )
+    .sort((a, b) => b.getLikes() - a.getLikes())
+    .slice(0, 5);
+
+}
 }
 
 export { ClaimRepository };
