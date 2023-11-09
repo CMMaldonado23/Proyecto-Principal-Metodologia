@@ -22,6 +22,22 @@ class ClaimRepository {
 
     return claim ? claim : null;
   }
+ public async lastFiveOnfFireInLastHour(): Promise<Claim[]>{
+  const now = new Date();
+  const oneHourAgo = new Date(now);
+  oneHourAgo.setHours(now.getHours() - 1);
+
+  return this.getActiveClaims().filter((claim) =>
+  claim.createdAt > oneHourAgo
+  )
+  .sort((a,b) => b.getLikes()- a.getLikes())
+  .slice(0,5)
+ }
+  
+
+ private getActiveClaims(): Array<Claim>{
+  return this.claims.filter(c => !c.cloneOf);
+ }
 }
 
 export { ClaimRepository };
