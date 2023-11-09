@@ -3,23 +3,24 @@ import visitorRepository, {VisitorRepository} from "../../infrastructure/reposit
 import LikeCommand from "../commands/LikeCommand";
 
 export class LikeHandler {
-  private claimRepository: ClaimRepository;
-  private visitorRepository: VisitorRepository;
-
-  public constructor(claimRepository: ClaimRepository, visitorRepository: VisitorRepository) {
-    this.claimRepository = claimRepository;
-    this.visitorRepository = visitorRepository;
-  }
-
+  
+  public constructor(
+    private readonly claimRepository: ClaimRepository,
+    private readonly visitorRepository: VisitorRepository
+    
+  ) {}
   public async execute(command: LikeCommand) {
+    //const id = command.getId();
+    //const owner = command.getvisitorId();
+    //const pint = command.getPin    teniendolos aca podemos remplazar el command por la variable
 
-    const claim = await this.claimRepository.findOneById(command.getClaimId());
+    const claim = await this.claimRepository.findOneById(command.getId());
 
     if (!claim) {
       throw new Error('claim not found');
     }
 
-    const visitor = await this.visitorRepository.findOneById(command.getVisitorId());
+    const visitor = await this.visitorRepository.findOneById(command.getvisitorId());
 
     if (!visitor) {
       throw new Error('visitor not found');

@@ -1,26 +1,26 @@
 class CreateLikeCommand {
     private readonly visitorId: string;
-    private readonly visitorPin: string;
-    private readonly claimId: string;
+    private readonly pin: string;
+    private readonly id: string;
 
     public constructor(
-        visitorId: string, 
-        visitorPin: string,
-        claimId: string,     
+        owner: string, 
+        pin: string,
+        id: string
         ){
-            this.visitorId = visitorId;
-            this.visitorPin = visitorPin;
-            this.claimId = claimId;
+            this.visitorId = owner;
+            this.pin = pin;
+            this.id = id;
         }
 
     public getvisitorId(): string {
         return this.visitorId;
     }    
-    public getvisitorPin(): string {
-        return this.visitorPin;
+    public getPin(): string {
+        return this.pin;
     }
-    public getclaimId(): string {
-        return this.claimId;
+    public getId(): string {
+        return this.id;
     }
 }
 export default CreateLikeCommand;
