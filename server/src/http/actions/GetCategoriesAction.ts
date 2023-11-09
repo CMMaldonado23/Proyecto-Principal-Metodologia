@@ -1,14 +1,18 @@
 import {Request, Response} from "express";
-import  category from "../../domain/entities/Entity_Category"
 import CategoryRepository from "../../infrastructure/repositories/RepositoryCategory"
 
 
 class GetCategoryAction{
 
     async run(_req: Request, res: Response){
-        const category: category[]= await CategoryRepository.findAll();
-        
+        try{
 
+            const categories = await CategoryRepository.findAll();
+            res.status(200).json(categories);
+            
+        }catch{
+            res.status(500).json({error: "Error al obterner las categorias"});
+        }
     }
 }
 
