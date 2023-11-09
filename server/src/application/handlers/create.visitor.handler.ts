@@ -1,19 +1,25 @@
 import Visitor from "domain/entities/Entity_Visitor";
-import RepositoryVisitor from "infrastructure/repositories/RepositoryVisitor";
+
 import CreateVisitorCommand from "application/commands/create.visitor.command";
 
+import visitorRepository ,{VisitorRepository} from "infrastructure/repositories/RepositoryVisitor";
 
-class CreateVisitorHandler {
-  async execute(command: CreateVisitorCommand) {
 
-    const visitor = Visitor.create(
-      command.getIp(),
-      command.getNickname(),
-      command.getPin()
-    );
+export class CreateVisitorHandler {
+    private visitorRepository : VisitorRepository;
+    public constructor(visitorRepository: VisitorRepository){
+        this.visitorRepository = visitorRepository;
+    }
 
-    await RepositoryVisitor.save(visitor);
-  }
+    public async handle(command: CreateVisitorCommand): Promise <void>{
+        const visitor = Visitor.create(
+            command.getIp(),
+            command.getNickname(),
+            command.getPin()
+        );
+
+        await this.visitorRepository.save(visitor);
+    }
 }
 
-export default new CreateVisitorHandler();
+export default new CreateVisitorHandler(visitorRepository);

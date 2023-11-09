@@ -1,16 +1,20 @@
-import RepositoryCategory from "infrastructure/repositories/RepositoryCategory";
+import Category from "domain/entities/Entity_Category";
+import  categoryRepository ,{CategoryRepository} from "infrastructure/repositories/RepositoryCategory";
 import CreateCategoryCommand from "application/commands/GetCategoriesCommand";
 
 
-class GetCategoriesHandler{
-    async execute (command : CreateCategoryCommand){
-        const categories = await RepositoryCategory.findOneById(command.getId())
-
-        if(!categories){
-            throw new Error ('Category not found');
-        }
-        return categories;
+export class GetCategoriesHandler{
+    private categoryRepository: CategoryRepository;
+    public constructor(categoryRepository: CategoryRepository){
+        this.categoryRepository= categoryRepository;
+    }
+    public async handle(command:CreateCategoryCommand): Promise <void>{
+        const categories = Category.create(
+            command.getName(),
+            command.getColor(),
+        );
+        await this.categoryRepository.save(categories)
     }
 }
 
-export default new GetCategoriesHandler();
+export default new GetCategoriesHandler(categoryRepository);
