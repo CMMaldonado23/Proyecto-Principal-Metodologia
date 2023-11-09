@@ -1,23 +1,23 @@
 class CreateDislikeCommand {
-    private readonly visitorId: string;
-    private readonly visitorPin: string;
-    private readonly claimId: string;
+    //private readonly visitorId: string;
+    //private readonly pin: string;
+    //private readonly claimId: string;
 
     public constructor(
-        visitorId: string, 
-        visitorPin: string,
-        claimId: string,     
+        private visitorId: string, 
+        private pin: string,
+        private claimId: string,     
         ){
             this.visitorId = visitorId;
-            this.visitorPin = visitorPin;
+            this.pin = pin;
             this.claimId = claimId;
         }
 
     public getVisitorId(): string {
         return this.visitorId;
     }    
-    public getVisitorPin(): string {
-        return this.visitorPin;
+    public getPin(): string {
+        return this.pin;
     }
     public getClaimId(): string {
         return this.claimId;
