@@ -3,16 +3,16 @@ import Category from './Entity_Category';
 import {v4} from "uuid";
 
 class Claim {
-  private id: string;
-  private owner: Visitor;
-  private title: string;
-  private description: string;
-  private category: Category;
-  private location: string;
-  private createdAt: Date;
-  private cloneOf: Claim| null;
-  private likes: string[] = []
-  private dislikes: string[] = []
+  id: string;
+  owner: Visitor;
+  title: string;
+  description: string;
+  category: Category;
+  location: string;
+  createdAt: Date;
+  cloneOf: Claim| null;
+  private likes: string[] = [];
+  private dislikes: string[] = [];
 
   private constructor(
     id: string,
@@ -110,7 +110,7 @@ class Claim {
   public getCloneOf(): Claim | null{
     return this.cloneOf;
   }
-
+ //likes agregados
   addLike(id: string) {
     if (this.hasVisitorLiked(id)) {
       throw new Error('Visitor has already liked this claim.')
@@ -125,6 +125,7 @@ class Claim {
     }
   }
 
+  // validacion si ya hizo like el visitante 
   public hasVisitorLiked(id: string) {
     return this.likes.includes(id);
   }
@@ -133,6 +134,8 @@ class Claim {
     return this.dislikes.includes(id);
   }
 
+
+  //reporte de un duplicado
   public report(originalClaim: Claim) {
 
     if (this.createdAt.getTime() < originalClaim.createdAt.getTime()) {
@@ -140,6 +143,11 @@ class Claim {
     }
 
     this.cloneOf = originalClaim;
+  }
+
+  //obtener la cantidad de likes
+  public getLikes(): number {
+    return this.likes.length;
   }
 }
 
