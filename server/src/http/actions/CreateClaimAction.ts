@@ -1,38 +1,41 @@
 import { Request, Response } from 'express';
 import CreateClaimCommand from 'application/commands/create.claim.command';
-import createClaimHandler from 'application/handlers/create.claim.handler';
+import createClaimHandler, {CreateClaimHandler} from "../../application/handlers/create.claim.handler"
 
 class CreateClaimAction {
-  public async run(req: Request, res: Response) {
-    const { id, owner, title, description, category, location, createdAt,cloneOf } = req.body;
+  constructor(
+    private handler: CreateClaimHandler
+  ){
 
+  }
+  public async run(req: Request, res: Response) {
+    const { owner, title, description, category, location } = req.body;
     try {
-      if (!owner || !title || !description || !category || !location || !id) {
+      if (!owner || !title || !description || !category || !location) {
         res.status(400).json({message: "Todos los campos son obligatorios"});
         return
       }
       const command = new CreateClaimCommand(
-        id,
         owner,
         title,
         description,
         category,
         location,
-        createdAt,
-        cloneOf
+        
       );
       
-      await createClaimHandler.execute(command);
+      await this.handler.handle(command);
 
       return res.status(201).json(
         { message: 'El reclamo fue cargado' }
       );
     } catch (error) {
+      const {message} = error as Error;
       res.status(400).json(
-        { message: error.message }
+        { message: message }
       );
     }
   }
 }
 
-export default new CreateClaimAction();
+export default new CreateClaimAction(createClaimHandler);

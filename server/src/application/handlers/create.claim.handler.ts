@@ -7,7 +7,7 @@ import  categoryRepository ,{ CategoryRepository } from "infrastructure/reposito
 
 import CreateClaimCommand from "application/commands/create.claim.command";
 
-class CreateClaimHandler {
+export class CreateClaimHandler {
 
     public constructor(
         private repositoryVisitor: VisitorRepository,
@@ -18,16 +18,16 @@ class CreateClaimHandler {
         this.claimRepository = claimRepository;
         this.repositoryCategory = repositoryCategory;
     }
-       public async execute (command: CreateClaimCommand): Promise<void>{
+       public async handle(command: CreateClaimCommand): Promise<void>{
         const owner = await this.repositoryVisitor.findOneById(command.getOwner())
 
         if(!owner){
-            throw new Error('');
+            throw new Error('El visitante no existe');
         }
 
         const category = await this.repositoryCategory.findOneById(command.getCategory())
         if(!category){
-            throw new Error('')
+            throw new Error('La categoria no fue encontrada')
         }
 
         const claim = Claim.create(
