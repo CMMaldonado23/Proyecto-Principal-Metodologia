@@ -4,6 +4,9 @@ import createClaimAction from '../actions/claim/create.claim.action';
 import updateClaimAction from '../actions/claim/update.claim.action';
 import findClaimAction from '../actions/claim/find.claim.action';
 
+import LikeAction from 'http/actions/LikeAction';
+import GetLastClaimsAction from 'http/actions/GetLastClaimsAction';
+import report.claim.action from 'http/action/report.claim.action'
 class ClaimRoutes extends CommonRoutes {
   public constructor(app: Application) {
     super(app, 'claim');
@@ -11,8 +14,9 @@ class ClaimRoutes extends CommonRoutes {
 
   public setUpRoutes(): Application {
     this.app.post('/claim', createClaimAction.run);
-    this.app.get('/claim', findClaimAction.run);
-    this.app.put('/claim/:id', updateClaimAction.run);
+    this.app.put('/claim/:id/like', LikeAction.run);
+    this.app.put('/claim/:id/report', report.claim.action.run);
+    this.app.get('/claim', GetLastClaimsAction.run)
 
     return this.app;
   }

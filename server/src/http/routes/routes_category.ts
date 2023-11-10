@@ -1,8 +1,6 @@
 import {Application} from 'express';
 import CommonRoutes from './common.routes';
-import createCategoryAction from '../actions/category/create.category.action';
-import updateCategoryAction from '../actions/category/update.category.action';
-import findCategoryAction from '../actions/category/find.category.action';
+import GetCategoriesAction from 'http/actions/GetCategoriesAction';
 
 class CategoryRoutes extends CommonRoutes{
     public constructor(app: Application){
@@ -10,9 +8,9 @@ class CategoryRoutes extends CommonRoutes{
     }
 
     public setUpRoutes(): Application {
-        this.app.post('/category', createBookingAction.run)
-        this.app.get('/category', findBookingAction.run)
-        this.app.put('/category/:id', updateBookingAction.run )
+       
+        this.app.get('/category', GetCategoriesAction.run)
+        
 
         return this.app;
     }

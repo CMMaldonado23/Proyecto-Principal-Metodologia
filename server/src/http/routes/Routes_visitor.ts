@@ -16,7 +16,7 @@ class VisitorRoutes extends CommonRoutes{
 public setUpRoutes(): Application{
     this.app.post('/visitor', createVisitorAction.run);
     this.app.get('/visitor', findVisitorAction.run);
-    this.app.put('/visitor/:id', updateVisitorAction.Run);
+
 
 
     return this.app;
