@@ -5,11 +5,11 @@ class CreateDislikeCommand {
 
     public constructor(
         visitorId: string, 
-        visitorPin: string,
+        Pin: string,
         claimId: string,     
         ){
             this.visitorId = visitorId;
-            this.visitorPin = visitorPin;
+            this.visitorPin = Pin;
             this.claimId = claimId;
         }
 
