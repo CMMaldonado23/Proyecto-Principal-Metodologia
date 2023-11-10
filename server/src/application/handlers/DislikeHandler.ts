@@ -23,7 +23,7 @@ export class DislikeHandler {
             throw new Error('visitor not found');
           }
       
-        if (!visitor.pinMatch(command.getPin())) {
+        if (!visitor.pinMatch(command.getVisitorPin())) {
             throw new Error('visitor pin does not match')
         }
 
