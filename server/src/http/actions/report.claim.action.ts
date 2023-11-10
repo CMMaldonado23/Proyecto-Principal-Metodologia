@@ -4,7 +4,7 @@ import reportClaimHandler, {ReportClaimHandler} from "../../application/handlers
 
 export class reportClaimAction{
     constructor(
-        private handler: reportClaimHandler
+        private handler: ReportClaimHandler
     ){        
     }
 
