@@ -1,4 +1,4 @@
-class CreateLikeCommand {
+export class CreateLikeCommand {
     private readonly visitorId: string;
     private readonly pin: string;
     private readonly id: string;
