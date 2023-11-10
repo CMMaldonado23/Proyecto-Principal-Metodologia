@@ -10,8 +10,10 @@ export class DislikeHandler {
         this.visitorRepository = visitorRepository;
     }
 
-    public async execute(command: DislikeCommand){
-        const claim = await this.claimRepository.findOneById(command.getClaimId());
+    public async handle(command: DislikeCommand): Promise<void>
+    {
+        const claimId = command.getClaimId();
+        const claim = await this.claimRepository.findOneById(claimId);
 
         if (!claim) {
             throw new Error('claim not found');
